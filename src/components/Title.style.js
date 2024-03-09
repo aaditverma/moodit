@@ -9,6 +9,7 @@ export const Title = styled.div`
   align-items: center;
 
   span{
+    
     font-weight: 600;
     font-size: 0.875em;
   }

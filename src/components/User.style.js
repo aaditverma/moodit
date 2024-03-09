@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const User = styled.div`
   width: 100%;
   height: auto;
@@ -8,17 +7,20 @@ export const User = styled.div`
   align-items: center;
   cursor: pointer;
 
-  :hover{
-    text-decoration: underline;
-  }
-
-  img{
+  img {
     border-radius: 50%;
   }
 
-  span{
+  span {
     margin-left: 0.5em;
     font-size: 0.875em;
     font-weight: 400;
+  }
+
+  /* Hover effect */
+  &:hover {
+    span {
+      font-weight: bold; /* Set font weight to bold on hover */
+    }
   }
 `;
