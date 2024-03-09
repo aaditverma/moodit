@@ -1,5 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import { DownloadButton } from "./components/DownloadButton.style";
+
+
+
+import logo from "./images/logo.png"
+import loading from "./images/loading.svg"
+import downloadIcon from "./images/download-icon.png"
+import goIcon from "./images/top-right-arrow.png"
 
 function App() {
   return (
