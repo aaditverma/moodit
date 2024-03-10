@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+Here's a GitHub README template for your project:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+# AI Stylist App
 
-In the project directory, you can run:
+![Project Logo]((src/images/newlogo.jpg))
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The AI Stylist App is a web application that offers users an integrated experience of moodboarding, outfit suggestions, and direct shopping links. Unlike conventional social platforms or e-commerce sites, our app serves as a personal stylist for users by leveraging artificial intelligence (AI) to analyze photos and provide recommendations based on the top 3 items of clothing detected in the image.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Unique Selling Proposition (USP)
 
-### `npm test`
+Our niche lies in providing an integrated experience—inspiration to shopping. The Unique Selling Proposition (USP) of our app is its seamless fusion of moodboarding, outfit suggestions, and direct shopping links within a single platform. By integrating AI, the app acts as a personal stylist for users, offering tailored outfit suggestions based on their preferences and the items of clothing they are wearing.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Key Features
 
-### `npm run build`
+- **AI-Powered Styling:** Our app utilizes AI algorithms to analyze photos uploaded by users and identify the top 3 items of clothing.
+- **Moodboarding:** Users can create mood boards by saving outfit suggestions and inspiration images.
+- **Outfit Suggestions:** Based on the analysis of uploaded photos, the app provides personalized outfit suggestions that users can explore.
+- **Direct Shopping Links:** Users can easily shop for the recommended clothing items through direct links provided within the app.
+- **Seamless Integration:** The app seamlessly integrates moodboarding, outfit suggestions, and shopping links to provide a holistic styling experience.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Frontend:** React.js
+- **Backend:** Flask (Python)
+- **Artificial Intelligence:** Custom AI algorithms for image analysis
+- **Styling:** CSS with styled-components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+To run the AI Stylist App locally, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
+    https://github.com/aaditverma/moodit.git
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Navigate to the project directory:
+    cd moodit
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Install dependencies:
+    npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Start the development server:
+    npm start
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Open your browser and navigate to `http://localhost:3000` to view the app.
