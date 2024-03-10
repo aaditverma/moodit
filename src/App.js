@@ -13,14 +13,16 @@ import { PinInfo } from "./components/PinInfo.style";
 import { PinElements } from "./components/PinElements.style";
 import { SaveButton } from "./components/SaveButton.style";
 import { PageButton } from "./components/PageButton.style";
-import { DownloadButton } from "./components/DownloadButton.style";
+import { DownloadButton } from "./components/DownloadButton.style"; // Import the DownloadButton styled component
 import { Title } from "./components/Title.style";
 import { User } from "./components/User.style";
+import styled from "styled-components"; // Import styled-components
 
-import logo from "./images/logo.png"
-import loading from "./images/loading.svg"
-import downloadIcon from "./images/download-icon.png"
-import goIcon from "./images/top-right-arrow.png"
+import logo from "./images/logo.png";
+import loading from "./images/loading.svg";
+import downloadIcon from "./images/download-icon.png";
+import goIcon from "./images/top-right-arrow.png";
+
 
 const DUMMY_DATA = [
   {
@@ -3066,13 +3068,13 @@ function App() {
                <img src={logo} alt="Logo" />
             </Logo>
             <Form onSubmit={onFormSubmit}>
-               {/* Add an input element for file upload */}
-               <label htmlFor="upload-input">Upload Image:</label>
-               <input type="file" id="upload-input" onChange={handleFileInputChange} accept="image/*" />
-               <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} style={{ width: "150px" }} /> {/* Shorten the size of the search bar */}
+               <UploadButton> {/* Use the UploadButton styled component */}
+                  Create
+                  <input type="file" id="upload-input"  onChange={handleFileInputChange} accept="image/*" />
+               </UploadButton>
+               <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} style={{ width: "150px" }} />
             </Form>
          </MenuBar>
-         {/* Display the uploaded image */}
          {uploadedImage && <img src={uploadedImage} alt="Uploaded" />}
          <PinGrid 
             pinWidth={pinWidth}
