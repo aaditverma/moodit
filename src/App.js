@@ -2987,25 +2987,25 @@ function App() {
    
    const pinWidth = 252;
 
-   const {isLoading, error, pins} = useSearch(query, pageNumber);
+   const { isLoading, error, pins } = useSearch(query, pageNumber);
    
-   const observer = useRef()
+   const observer = useRef();
    const lastPin = useCallback(node => {
-      if(isLoading) return
-      if(observer.current) observer.current.disconnect()
+      if (isLoading) return;
+      if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(entries => {
-         if(entries[0].isIntersecting)
-            setPageNumber(prevPageNumber => prevPageNumber + 1)
-      })
-      if(node) observer.current.observe(node)
-   }, [isLoading])
+         if (entries[0].isIntersecting)
+            setPageNumber(prevPageNumber => prevPageNumber + 1);
+      });
+      if (node) observer.current.observe(node);
+   }, [isLoading]);
 
    const onFormSubmit = (e) => {
       e.preventDefault();
-      setQuery(input)
+      setQuery(input);
       setInput("");
       setPageNumber(1);
-   }
+   };
 
    const mappedPins = pins && pins.map((pin, index) => (
       <PinContainer
@@ -3014,30 +3014,32 @@ function App() {
          pinWidth={pinWidth}
       >
          <Pin
-         id={pin.id}
-         spanHeight={Math.round((pinWidth * pin.height) / pin.width / 10)}
-         ref={(pins.length === index + 1) ? lastPin : null}
-         background={pin.urls.regular}
-         pinWidth={pinWidth}
+            id={pin.id}
+            spanHeight={Math.round((pinWidth * pin.height) / pin.width / 10)}
+            ref={(pins.length === index + 1) ? lastPin : null}
+            background={pin.urls.regular}
+            pinWidth={pinWidth}
          >
             <PinInfo>
                <PinElements>
                   <SaveButton>
-                  Save
+                     Save
                   </SaveButton>
                </PinElements>
                <PinElements>
-                  <PageButton background={goIcon}>
-                     {pin.user.username}
-                  </PageButton>
                   <DownloadButton>
-                     <img src={downloadIcon} />
+                     <img src={downloadIcon} alt="Download" />
                   </DownloadButton>
                </PinElements>               
             </PinInfo>
          </Pin>
          {pin.description && <Title><span>{pin.description}</span></Title>}
-         {pin.user && <User><img src={pin.user.profile_image.small} /><span>{pin.user.instagram_username}</span></User>}
+         {pin.user && 
+            <User>
+               <img src={pin.user.profile_image.small} alt="User" />
+               <span>{pin.user.instagram_username}</span>
+            </User>
+         }
       </PinContainer>
    ));
 
@@ -3045,19 +3047,19 @@ function App() {
       <>
          <GlobalStyle/>
          <MenuBar>
-         <Logo>
-            <img src={logo} />
-         </Logo>
-         <Form onSubmit={onFormSubmit}>
-            <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} />
-         </Form>
+            <Logo>
+               <img src={logo} alt="Logo" />
+            </Logo>
+            <Form onSubmit={onFormSubmit}>
+               <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} />
+            </Form>
          </MenuBar>
          <PinGrid 
             pinWidth={pinWidth}
          >
-         {mappedPins}
+            {mappedPins}
          </PinGrid>
-         {isLoading && <Loading src={loading} />}
+         {isLoading && <Loading src={loading} alt="Loading" />}
          {error && "Error: " + error}
       </>
    );
