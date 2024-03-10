@@ -17,6 +17,7 @@ import { DownloadButton } from "./components/DownloadButton.style"; // Import th
 import { Title } from "./components/Title.style";
 import { User } from "./components/User.style";
 import styled from "styled-components"; // Import styled-components
+import { UploadButton } from "./components/UploadButton.style"; // Import the UploadButton styled component
 
 import logo from "./images/logo.png";
 import loading from "./images/loading.svg";
