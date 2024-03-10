@@ -17,7 +17,8 @@ import { DownloadButton } from "./components/DownloadButton.style"; // Import th
 import { Title } from "./components/Title.style";
 import { User } from "./components/User.style";
 import styled from "styled-components"; // Import styled-components
-import { UploadButton } from "./components/UploadButton.style"; // Import the UploadButton styled component
+// App.js
+import UploadButton from "./components/UploadButton.style";
 
 import logo from "./images/logo.png";
 import loading from "./images/loading.svg";
@@ -2988,104 +2989,106 @@ function App() {
    const [query, setQuery] = useState("");
    const [pageNumber, setPageNumber] = useState(1);
    const [uploadedImage, setUploadedImage] = useState(null); // State to store the uploaded image
-   
+ 
    const pinWidth = 252;
-
+ 
    const { isLoading, error, pins } = useSearch(query, pageNumber);
-   
+ 
    const observer = useRef();
-   const lastPin = useCallback(node => {
-      if (isLoading) return;
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver(entries => {
-         if (entries[0].isIntersecting)
-            setPageNumber(prevPageNumber => prevPageNumber + 1);
-      });
-      if (node) observer.current.observe(node);
-   }, [isLoading]);
-
-   const onFormSubmit = (e) => {
-      e.preventDefault();
-      setQuery(input);
-      setInput("");
-      setPageNumber(1);
-   };
-
-   const handleFileInputChange = (e) => {
-      const file = e.target.files[0]; // Get the first file from the input
-      
-      // Read the file as a data URL
-      const reader = new FileReader();
-      reader.onload = (event) => {
-         setUploadedImage(event.target.result); // Set the uploaded image data
-         
-         // Save the image data to local storage
-         localStorage.setItem("uploadedImage", event.target.result);
-      };
-      reader.readAsDataURL(file);
-   };
-
-   const mappedPins = pins && pins.map((pin, index) => (
-      <PinContainer
-         key={pin.id}
-         spanHeight={Math.round((pinWidth * pin.height) / pin.width / 10 + 10)}
-         pinWidth={pinWidth}
-      >
-         <Pin
-            id={pin.id}
-            spanHeight={Math.round((pinWidth * pin.height) / pin.width / 10)}
-            ref={(pins.length === index + 1) ? lastPin : null}
-            background={pin.urls.regular}
-            pinWidth={pinWidth}
-         >
-            <PinInfo>
-               <PinElements>
-                  <SaveButton>
-                     Save
-                  </SaveButton>
-               </PinElements>
-               <PinElements>
-                  <DownloadButton>
-                     <img src={downloadIcon} alt="Download" />
-                  </DownloadButton>
-               </PinElements>               
-            </PinInfo>
-         </Pin>
-         {pin.description && <Title><span>{pin.description}</span></Title>}
-         {pin.user && 
-            <User>
-               <img src={pin.user.profile_image.small} alt="User" />
-               <span>{pin.user.instagram_username}</span>
-            </User>
-         }
-      </PinContainer>
-   ));
-
-   return (
-      <>
-         <GlobalStyle/>
-         <MenuBar>
-            <Logo>
-               <img src={logo} alt="Logo" />
-            </Logo>
-            <Form onSubmit={onFormSubmit}>
-               <UploadButton> {/* Use the UploadButton styled component */}
-                  Create
-                  <input type="file" id="upload-input"  onChange={handleFileInputChange} accept="image/*" />
-               </UploadButton>
-               <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} style={{ width: "150px" }} />
-            </Form>
-         </MenuBar>
-         {uploadedImage && <img src={uploadedImage} alt="Uploaded" />}
-         <PinGrid 
-            pinWidth={pinWidth}
-         >
-            {mappedPins}
-         </PinGrid>
-         {isLoading && <Loading src={loading} alt="Loading" />}
-         {error && "Error: " + error}
-      </>
+   const lastPin = useCallback(
+     (node) => {
+       if (isLoading) return;
+       if (observer.current) observer.current.disconnect();
+       observer.current = new IntersectionObserver((entries) => {
+         if (entries[0].isIntersecting) setPageNumber((prevPageNumber) => prevPageNumber + 1);
+       });
+       if (node) observer.current.observe(node);
+     },
+     [isLoading]
    );
-}
-
-export default App;
+ 
+   const onFormSubmit = (e) => {
+     e.preventDefault();
+     setQuery(input);
+     setInput("");
+     setPageNumber(1);
+   };
+ 
+   const handleFileInputChange = (e) => {
+     const file = e.target.files[0]; // Get the first file from the input
+ 
+     // Read the file as a data URL
+     const reader = new FileReader();
+     reader.onload = (event) => {
+       setUploadedImage(event.target.result); // Set the uploaded image data
+ 
+       // Save the image data to local storage
+       localStorage.setItem("uploadedImage", event.target.result);
+     };
+     reader.readAsDataURL(file);
+   };
+ 
+   const mappedPins = pins && pins.map((pin, index) => (
+     <PinContainer
+       key={pin.id}
+       spanHeight={Math.round((pinWidth * pin.height) / pin.width / 10 + 10)}
+       pinWidth={pinWidth}
+     >
+       <Pin
+         id={pin.id}
+         spanHeight={Math.round((pinWidth * pin.height) / pin.width / 10)}
+         ref={(pins.length === index + 1) ? lastPin : null}
+         background={pin.urls.regular}
+         pinWidth={pinWidth}
+       >
+         <PinInfo>
+           <PinElements>
+             <SaveButton>
+               Save
+             </SaveButton>
+           </PinElements>
+           <PinElements>
+             <DownloadButton>
+               <img src={downloadIcon} alt="Download" />
+             </DownloadButton>
+           </PinElements>               
+         </PinInfo>
+       </Pin>
+       {pin.description && <Title><span>{pin.description}</span></Title>}
+       {pin.user && 
+         <User>
+           <img src={pin.user.profile_image.small} alt="User" />
+           <span>{pin.user.instagram_username}</span>
+         </User>
+       }
+     </PinContainer>
+   ));
+ 
+   return (
+     <>
+       <GlobalStyle/>
+       <MenuBar>
+         <Logo>
+           <img src={logo} alt="Logo" />
+         </Logo>
+         <Form onSubmit={onFormSubmit}>
+           <UploadButton> {/* Use the UploadButton styled component */}
+             Create
+             <input type="file" id="upload-input"  onChange={handleFileInputChange} accept="image/*" />
+           </UploadButton>
+           <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} style={{ width: "150px" }} />
+         </Form>
+       </MenuBar>
+       {uploadedImage && <img src={uploadedImage} alt="Uploaded" />}
+       <PinGrid 
+         pinWidth={pinWidth}
+       >
+         {mappedPins}
+       </PinGrid>
+       {isLoading && <Loading src={loading} alt="Loading" />}
+       {error && "Error: " + error}
+     </>
+   );
+ }
+ 
+ export default App;
