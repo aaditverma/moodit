@@ -2984,6 +2984,7 @@ function App() {
    const [input, setInput] = useState("");
    const [query, setQuery] = useState("");
    const [pageNumber, setPageNumber] = useState(1);
+   const [uploadedImage, setUploadedImage] = useState(null); // State to store the uploaded image
    
    const pinWidth = 252;
 
@@ -3005,6 +3006,20 @@ function App() {
       setQuery(input);
       setInput("");
       setPageNumber(1);
+   };
+
+   const handleFileInputChange = (e) => {
+      const file = e.target.files[0]; // Get the first file from the input
+      
+      // Read the file as a data URL
+      const reader = new FileReader();
+      reader.onload = (event) => {
+         setUploadedImage(event.target.result); // Set the uploaded image data
+         
+         // Save the image data to local storage
+         localStorage.setItem("uploadedImage", event.target.result);
+      };
+      reader.readAsDataURL(file);
    };
 
    const mappedPins = pins && pins.map((pin, index) => (
@@ -3047,14 +3062,18 @@ function App() {
       <>
          <GlobalStyle/>
          <MenuBar>
-         <Logo>
-            <img src={require('./images/newlogo.jpg')} alt="New Logo" />
-         </Logo>
-
+            <Logo>
+               <img src={logo} alt="Logo" />
+            </Logo>
             <Form onSubmit={onFormSubmit}>
+               {/* Add an input element for file upload */}
+               <label htmlFor="upload-input">Upload Image:</label>
+               <input type="file" id="upload-input" onChange={handleFileInputChange} accept="image/*" />
                <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} style={{ width: "150px" }} /> {/* Shorten the size of the search bar */}
             </Form>
          </MenuBar>
+         {/* Display the uploaded image */}
+         {uploadedImage && <img src={uploadedImage} alt="Uploaded" />}
          <PinGrid 
             pinWidth={pinWidth}
          >
