@@ -3047,11 +3047,12 @@ function App() {
       <>
          <GlobalStyle/>
          <MenuBar>
-            <Logo>
-               <img src={logo} alt="Logo" />
-            </Logo>
+         <Logo>
+            <img src={require('./images/newlogo.jpg')} alt="New Logo" />
+         </Logo>
+
             <Form onSubmit={onFormSubmit}>
-               <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} />
+               <SearchBar placeholder="Search" onChange={e => setInput(e.target.value)} value={input} style={{ width: "150px" }} /> {/* Shorten the size of the search bar */}
             </Form>
          </MenuBar>
          <PinGrid 
