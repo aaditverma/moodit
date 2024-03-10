@@ -17,7 +17,6 @@ export const User = styled.div`
     font-weight: 400;
   }
 
-  /* Hover effect */
   &:hover {
     span {
       font-weight: bold; /* Set font weight to bold on hover */

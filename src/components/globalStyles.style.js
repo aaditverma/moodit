@@ -8,8 +8,11 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        background-color: #;
+        background-color: #FFF;
+        color: #000;
     }
+
+    
 
     img{
         max-width: 100%;
